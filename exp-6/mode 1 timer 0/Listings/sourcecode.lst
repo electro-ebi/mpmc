@@ -1,0 +1,62 @@
+C51 COMPILER V9.60.7.0   SOURCECODE                                                        03/26/2024 14:18:36 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE SOURCECODE
+OBJECT MODULE PLACED IN .\Objects\sourcecode.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE sourcecode.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listing
+                    -s\sourcecode.lst) TABS(2) OBJECT(.\Objects\sourcecode.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          
+   3          #define ON 1
+   4          #define OFF 0
+   5          
+   6          sbit led = P2^0;
+   7          unsigned int i = 0;
+   8          
+   9          void delay();
+  10          
+  11          void main(void)
+  12          {
+  13   1          while (1)
+  14   1          {
+  15   2            led = ON;
+  16   2            
+  17   2                delay();
+  18   2              
+  19   2            led = OFF;
+  20   2              
+  21   2                delay();
+  22   2            
+  23   2          }
+  24   1      }
+  25          
+  26          void delay()
+  27          {
+  28   1          TMOD = 0x01;
+  29   1          TL0 = 0xFC;
+  30   1          TH0 = 0x66;
+  31   1          TR0 = 1;
+  32   1          while (TF0 == 0)
+  33   1          {
+  34   2         
+  35   2          }
+  36   1          TR0 = 0;
+  37   1          TF0 = 0;  
+  38   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     31    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

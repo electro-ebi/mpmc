@@ -1,0 +1,55 @@
+C51 COMPILER V9.60.7.0   SOURCE_CODE                                                       03/26/2024 13:32:58 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE SOURCE_CODE
+OBJECT MODULE PLACED IN .\Objects\source_code.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE source_code.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listin
+                    -gs\source_code.lst) TABS(2) OBJECT(.\Objects\source_code.obj)
+
+line level    source
+
+   1          
+   2          
+   3          #include <reg51.h>
+   4          
+   5          void msdelay(unsigned int); // Function prototype declaration
+   6          
+   7          void main(void)
+   8          {
+   9   1          P0=0x55;
+  10   1          P2=0x55;
+  11   1          while (1)
+  12   1          {
+  13   2              P0=~P0;
+  14   2              P2=P2^0xFF;
+  15   2              msdelay(250);
+  16   2          }
+  17   1      }
+  18          
+  19          void msdelay(unsigned int time) // Function definition with a named parameter
+  20          {
+  21   1          TMOD=0x00;
+  22   1          TL0=0x00;
+  23   1          TH0=0x35;
+  24   1          TR0=1;
+  25   1          while (TF0==0); // Wait until the timer overflows
+  26   1          {
+  27   2              TR0=0; // Stop Timer 0
+  28   2              TF0=0; // Clear Timer 0 overflow flag
+  29   2          }
+  30   1      }
+*** WARNING C280 IN LINE 19 OF source_code.c: 'time': unreferenced local variable
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     43    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

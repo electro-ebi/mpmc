@@ -1,0 +1,1 @@
+"source_code.c" OPTIMIZE (8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\source_code.lst) TABS (2) OBJECT(.\Objects\source_code.obj)

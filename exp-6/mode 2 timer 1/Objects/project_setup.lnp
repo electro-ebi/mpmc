@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\source_code.obj" 
+TO ".\Objects\project_setup" 
+PRINT(".\Listings\project_setup.m51")

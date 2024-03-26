@@ -1,0 +1,47 @@
+C51 COMPILER V9.60.7.0   SOURCE_CODE                                                       03/26/2024 13:07:49 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE SOURCE_CODE
+OBJECT MODULE PLACED IN .\Objects\source_code.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE source_code.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listin
+                    -gs\source_code.lst) TABS(2) OBJECT(.\Objects\source_code.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          
+   3          sbit freq = P3^4;
+   4          
+   5          void delay();
+   6          
+   7          void main(void) {
+   8   1          while (1) {
+   9   2              freq = ~freq;
+  10   2              delay();
+  11   2          }
+  12   1      }
+  13          
+  14          void delay() {
+  15   1          TMOD = 0x20;   // Initialize Timer 1 in mode 2
+  16   1          TH1 = 0x3C;    // Set initial value for 1 ms delay (assuming 11.0592 MHz crystal)
+  17   1          TL1 = 0x3C;    // Set initial value for 1 ms delay (assuming 11.0592 MHz crystal)
+  18   1          TR1 = 1;       // Start Timer 1
+  19   1      
+  20   1          while (TF1 == 0); // Wait for Timer 1 overflow
+  21   1          TF1 = 0;           // Clear Timer 1 overflow flag
+  22   1          TR1 = 0;           // Stop Timer 1
+  23   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     26    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
